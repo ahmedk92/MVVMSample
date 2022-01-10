@@ -106,7 +106,7 @@ class ViewModel {
         UUID().uuidString,
         UUID().uuidString,
     ]
-    private var cancelables: Set<AnyCancellable> = []
+    private var cancellables: Set<AnyCancellable> = []
     
     init() {
         setUpOutputs()
@@ -127,7 +127,7 @@ class ViewModel {
                 guard let self = self else { return }
                 let isCurrentlySelected = self.output.isSelected[indexPath]?.value ?? defaultSelectedState
                 self.output.isSelected[indexPath]?.send(!isCurrentlySelected)
-            }.store(in: &cancelables)
+            }.store(in: &cancellables)
     }
     
 }
