@@ -21,7 +21,12 @@ class ViewModel {
         }
         
         func isSelected(indexPath: IndexPath) -> AnyPublisher<Bool, Never> {
-            isSelected[indexPath, default: .init(defaultSelectedState)].eraseToAnyPublisher()
+            if let subject = isSelected[indexPath] {
+                return subject.eraseToAnyPublisher()
+            } else {
+                isSelected[indexPath] = .init(defaultSelectedState)
+                return isSelected(indexPath: indexPath)
+            }
         }
         
         fileprivate var _count: CurrentValueSubject<Int, Never> = .init(0)
@@ -36,6 +41,54 @@ class ViewModel {
     let output: Output = .init()
     let input: Input = .init()
     private let data: [String] = [
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
+        UUID().uuidString,
         UUID().uuidString,
         UUID().uuidString,
         UUID().uuidString,

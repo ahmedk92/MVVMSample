@@ -46,7 +46,8 @@ class Cell: UITableViewCell {
         NSLayoutConstraint.activate([
             isSelectedButton.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 8),
             isSelectedButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-            isSelectedButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor)
+            isSelectedButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
+            isSelectedButton.widthAnchor.constraint(equalTo: isSelectedButton.heightAnchor)
         ])
     }
     
@@ -59,7 +60,9 @@ class Cell: UITableViewCell {
         }.store(in: &cancellables)
         
         viewModel.output.isSelected.sink { [weak self] isSelected in
-            self?.isSelectedButton.backgroundColor = isSelected ? .green : .red
+            UIView.animate(withDuration: 0.2) {
+                self?.isSelectedButton.backgroundColor = isSelected ? .green : .red
+            }
         }.store(in: &cancellables)
     }
     

@@ -49,6 +49,7 @@ class ViewController: UITableViewController {
     }
     
     private func setUpTableView() {
+        tableView.allowsSelection = false
         tableView.register(Cell.self, forCellReuseIdentifier: reuseId)
     }
     
