@@ -60,9 +60,10 @@ class Cell: UITableViewCell {
         }.store(in: &cancellables)
         
         viewModel.output.isSelected.sink { [weak self] isSelected in
-            UIView.animate(withDuration: 0.2) {
+            UIView.animate(withDuration: 0.2, delay: 0, options: .allowUserInteraction, animations: {
                 self?.isSelectedButton.backgroundColor = isSelected ? .green : .red
-            }
+            }, completion: nil)
+
         }.store(in: &cancellables)
     }
     
